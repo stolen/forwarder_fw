@@ -10,13 +10,13 @@ sc|tio|pc|picocom)
 	echo "Using user-specified program $PROG"
 	;;
 *)
-	echo "You can pass TERM=sc|tio|pc|picocom to use specific terminal program. Your TERM=$TERM"
+	echo "You can pass TERM=sc|tio|pc|picocom to use specific terminal program. Using default $PROG. Your TERM=$TERM"
 	;;
 esac
 	
 
 BITRATE=$USER
-DEVICE=/dev/ttyUSB0
+DEVICE=/dev/ttyS0
 
 
 case $PROG in

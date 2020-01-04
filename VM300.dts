@@ -9,6 +9,9 @@
 	compatible = "vonets,vm300", "ralink,mt7620n-soc";
 	model = "Vonets VM300";
 
+	chosen {
+		bootargs = "console= earlycom= quiet 8250.nr_uarts=1";
+	};
 
 	keys {
 		compatible = "gpio-keys-polled";
@@ -56,7 +59,6 @@
 			partition@30000 {
 				label = "u-boot-env";
 				reg = <0x30000 0x10000>;
-				read-only;
 			};
 
 			factory: partition@40000 {
