@@ -44,7 +44,7 @@ fgrep -q DEVICE_${PROFILE}_SUPPORTED_DEVICES .profiles.mk || {
 }
 
 
-mipsel-openwrt-linux-cpp -nostdinc -x assembler-with-cpp -I $SDKDIR/$LINUXDIR/linux-4.14.156/include -I target/linux/ramips/dts/ -undef -D__DTS__ -o $LINUXDIR/image-$BOARD.dtb.tmp ../$BOARD.dts
+mipsel-openwrt-linux-cpp -nostdinc -x assembler-with-cpp -I $SDKDIR/$LINUXDIR/linux-4.14.156/include -I target/linux/ramips/dts/ -undef -D__DTS__ -o $LINUXDIR/image-$BOARD.dtb.tmp $MYDIR/$BOARD.dts
 
 $SDKDIR/$LINUXDIR/linux-4.14.156/scripts/dtc/dtc -O dtb -i../dts/ -Wno-unit_address_vs_reg -Wno-unit_address_vs_reg -Wno-simple_bus_reg -Wno-unit_address_format -Wno-pci_bridge -Wno-pci_device_bus_num -Wno-pci_device_reg  -o $LINUXDIR/image-$BOARD.dtb $LINUXDIR/image-$BOARD.dtb.tmp
 
