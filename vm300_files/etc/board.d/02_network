@@ -233,6 +233,7 @@ ramips_setup_interfaces()
 	gl-mt300n|\
 	gl-mt750|\
 	hilink,hlk-7628n|\
+	hilink,hlk-7688a|\
 	hiwifi,hc5861b|\
 	jhr-n805r|\
 	jhr-n825r|\
@@ -528,6 +529,7 @@ ramips_setup_macs()
 	dir-620-a1|\
 	esr-9753|\
 	hilink,hlk-7628n|\
+	hilink,hlk-7688a|\
 	hlk-rm04|\
 	mpr-a1|\
 	psr-680w|\
