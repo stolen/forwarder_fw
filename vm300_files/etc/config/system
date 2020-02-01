@@ -1,0 +1,23 @@
+
+config system
+	option hostname 'forwarder-unconfigured'
+	option timezone 'UTC'
+	option ttylogin '0'
+	option log_size '64'
+	option urandom_seed '0'
+
+config timeserver 'ntp'
+	option enabled '1'
+	option enable_server '0'
+	list server '0.openwrt.pool.ntp.org'
+	list server '1.openwrt.pool.ntp.org'
+	list server '2.openwrt.pool.ntp.org'
+	list server '3.openwrt.pool.ntp.org'
+
+config gpio_switch 'dev_power'
+	option name 'Device power'
+	option gpio_pin '0'
+	option owner 'root:dialout'
+	option perms 0664
+	option active_low '1'
+	option value '0' # becomes 'low' which is actually '1'

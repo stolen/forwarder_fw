@@ -1,2 +1,3 @@
 /bin/ash
 /usr/libexec/serial.sh
+/usr/libexec/power.sh
