@@ -13,7 +13,7 @@
 		bootargs = "console= earlycom= quiet 8250.nr_uarts=1";
 	};
 
-	aliases {
+/*	aliases {
 		led-boot = &led_system;
 		led-failsafe = &led_system;
 		led-running = &led_system;
@@ -28,7 +28,7 @@
 			gpios = <&gpio0 0 GPIO_ACTIVE_HIGH>;
 		};
 	};
-
+*/
 	keys {
 		compatible = "gpio-keys-polled";
 		poll-interval = <20>;
@@ -42,6 +42,15 @@
 };
 
 &gpio0 {
+	status = "okay";
+};
+&gpio1 {
+	status = "okay";
+};
+&gpio2 {
+	status = "okay";
+};
+&gpio3 {
 	status = "okay";
 };
 
@@ -96,7 +105,7 @@
 &pinctrl {
 	state_default: pinctrl0 {
 		default {
-			ralink,group = "i2c", "wled";
+			ralink,group = "i2c", "wled", "pa", "rgmii2", "nd_sd", "pcie", "mdio", "uartf";
 			ralink,function = "gpio";
 		};
 	};

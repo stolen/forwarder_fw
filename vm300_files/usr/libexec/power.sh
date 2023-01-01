@@ -1,25 +1,35 @@
 #!/bin/ash
 
-pin=0
-valuepath=/sys/class/gpio/gpio$pin/value
-#echo "managing pin $pin"
+dev=1
+ADDR=`gpiofind DEV-$dev-PWR`
+[[ -z "$ADDR" ]] && exit 7
+
+on()
+{
+	gpioset $ADDR=1
+}
+
+off()
+{
+	gpioset $ADDR=0
+}
 
 exec_command()
 {
 	case $1 in
 	on)
-		echo 1 >$valuepath
+		on
 		echo " -> on"
 		;;
 	off)
-		echo 0 >$valuepath
+		off
 		echo " -> off"
 		;;
 	reset)
-		echo 0 >$valuepath
+		off
 		echo -n " -> off ..."
 		sleep ${2:-2} # 2 seconds default
-		echo 1 >$valuepath
+		on
 		echo " -> on"
 		;;
 	*)

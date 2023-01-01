@@ -1,0 +1,15 @@
+#!/bin/sh /etc/rc.common
+
+START=05
+USE_PROCD=1
+
+start_service()
+{
+	dev=1
+	while ADDR=`gpiofind DEV-$dev-PWR`; do
+		gpioset $ADDR=1
+		dev=$(($dev + 1))
+	done
+	chown root:dialout /dev/gpiochip*
+	chmod 664 /dev/gpiochip*
+}

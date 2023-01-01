@@ -44,9 +44,9 @@ fgrep -q DEVICE_${PROFILE}_SUPPORTED_DEVICES .profiles.mk || {
 }
 
 
-mipsel-openwrt-linux-cpp -nostdinc -x assembler-with-cpp -I $SDKDIR/$LINUXDIR/linux-4.14.156/include -I target/linux/ramips/dts/ -undef -D__DTS__ -o $LINUXDIR/image-$BOARD.dtb.tmp $MYDIR/$BOARD.dts
+mipsel-openwrt-linux-cpp -nostdinc -x assembler-with-cpp -I $SDKDIR/$LINUXDIR/linux-*/include -I target/linux/ramips/dts/ -undef -D__DTS__ -o $LINUXDIR/image-$BOARD.dtb.tmp $MYDIR/$BOARD.dts
 
-$SDKDIR/$LINUXDIR/linux-4.14.156/scripts/dtc/dtc -O dtb -i../dts/ -Wno-unit_address_vs_reg -Wno-unit_address_vs_reg -Wno-simple_bus_reg -Wno-unit_address_format -Wno-pci_bridge -Wno-pci_device_bus_num -Wno-pci_device_reg  -o $LINUXDIR/image-$BOARD.dtb $LINUXDIR/image-$BOARD.dtb.tmp
+$SDKDIR/$LINUXDIR/linux-*/scripts/dtc/dtc -O dtb -i../dts/ -Wno-unit_address_vs_reg -Wno-unit_address_vs_reg -Wno-simple_bus_reg -Wno-unit_address_format -Wno-pci_bridge -Wno-pci_device_bus_num -Wno-pci_device_reg  -o $LINUXDIR/image-$BOARD.dtb $LINUXDIR/image-$BOARD.dtb.tmp
 
 
 rm -f $LINUXDIR/$PKERNEL
@@ -54,4 +54,4 @@ cp $LINUXDIR/vmlinux $LINUXDIR/$PKERNEL.pre
 cat $LINUXDIR/image-$BOARD.dtb >> $LINUXDIR/$PKERNEL.pre
 
 $STAGING_DIR/host/bin/lzma e $LINUXDIR/$PKERNEL.pre -lc1 -lp2 -pb2  $LINUXDIR/$PKERNEL.new
-$STAGING_DIR/host/bin/mkimage -A mips -O linux -T kernel -C lzma -a 0x80000000 -e 0x80000000 -n 'MIPS OpenWrt Linux-4.14.156' -d $LINUXDIR/$PKERNEL.new $LINUXDIR/$PKERNEL
+$STAGING_DIR/host/bin/mkimage -A mips -O linux -T kernel -C lzma -a 0x80000000 -e 0x80000000 -n 'MIPS OpenWrt Linux' -d $LINUXDIR/$PKERNEL.new $LINUXDIR/$PKERNEL
